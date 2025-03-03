@@ -1,0 +1,8 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    - prefer_const_constructors  # Const kullanmayı teşvik eder
+    - avoid_print  # print() kullanımını engeller, logger tercih edilir
+    - unnecessary_null_checks  # Gereksiz null kontrollerini önler
+

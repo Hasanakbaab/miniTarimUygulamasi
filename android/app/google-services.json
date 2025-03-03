@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884793537338",
+    "project_id": "miniprojeuygulamasi",
+    "storage_bucket": "miniprojeuygulamasi.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884793537338:android:c270b34e7860d15a5ed603",
+        "android_client_info": {
+          "package_name": "com.example.mini_proje_uygulamasi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQokULCes3kyHBVkuW1pzXJttgkGDzfMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
