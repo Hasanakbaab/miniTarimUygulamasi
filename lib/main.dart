@@ -53,9 +53,13 @@ class _AuthScreenState extends State<AuthScreen> {
       setState(() {
         _message = 'Registration Successful';
       });
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        _message = 'Auth Error: ${e.code} - ${e.message}';
+      });
     } catch (e) {
       setState(() {
-        _message = 'Error: ${e.toString()}';
+        _message = 'General Error: ${e.toString()}';
       });
     }
   }
@@ -70,9 +74,13 @@ class _AuthScreenState extends State<AuthScreen> {
       setState(() {
         _message = 'Login Successful';
       });
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        _message = 'Auth Error: ${e.code} - ${e.message}';
+      });
     } catch (e) {
       setState(() {
-        _message = 'Error: ${e.toString()}';
+        _message = 'General Error: ${e.toString()}';
       });
     }
   }
@@ -108,35 +116,53 @@ class _AuthScreenState extends State<AuthScreen> {
             const SizedBox(height: 20),
             Text(_message),
 
-            // Field, Plant ve Irrigation Plan CRUD işlemlerini test etmek için butonlar ekleyebilirsiniz
+            // Field, Plant ve Irrigation Plan CRUD işlemlerini test etmek için butonlar
             ElevatedButton(
               onPressed: () async {
-                await _fieldService.addField(
-                  'UserID_1',
-                  'Elma Bahçesi',
-                  38.5,
-                  27.2,
-                );
+                try {
+                  await _fieldService.addField(
+                    'UserID_1',
+                    'Elma Bahçesi',
+                    38.5,
+                    27.2,
+                  );
+                } catch (e) {
+                  setState(() {
+                    _message = 'Field Error: ${e.toString()}';
+                  });
+                }
               },
               child: const Text('Add Field'),
             ),
             ElevatedButton(
               onPressed: () async {
-                await _plantService.addPlant(
-                  'FieldID_1',
-                  'Elma Ağacı',
-                  'Meyve',
-                );
+                try {
+                  await _plantService.addPlant(
+                    'FieldID_1',
+                    'Elma Ağacı',
+                    'Meyve',
+                  );
+                } catch (e) {
+                  setState(() {
+                    _message = 'Plant Error: ${e.toString()}';
+                  });
+                }
               },
               child: const Text('Add Plant'),
             ),
             ElevatedButton(
               onPressed: () async {
-                await _irrigationPlanService.addIrrigationPlan(
-                  'FieldID_1',
-                  '2025-03-01 06:00:00',
-                  100,
-                );
+                try {
+                  await _irrigationPlanService.addIrrigationPlan(
+                    'FieldID_1',
+                    '2025-03-01 06:00:00',
+                    100,
+                  );
+                } catch (e) {
+                  setState(() {
+                    _message = 'Irrigation Plan Error: ${e.toString()}';
+                  });
+                }
               },
               child: const Text('Add Irrigation Plan'),
             ),
